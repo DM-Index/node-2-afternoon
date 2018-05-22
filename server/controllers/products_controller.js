@@ -11,7 +11,7 @@ module.exports = {
 
   getOne: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { id } = req.param;
+    const { params } = req;
 
     dbInstance
       .read_product([params.id])
@@ -33,7 +33,7 @@ module.exports = {
     const { params, query } = req;
 
     dbInstance
-      .update_product([params.id, query.description])
+      .update_product([params.id, query.desc])
       .then(() => res.status(200).send())
       .catch(() => res.status(500).send());
   },
